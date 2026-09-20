@@ -20,7 +20,7 @@
                             50: '#f0fdf4',
                             100: '#dcfce7',
                             500: '#10b981',
-                            700: '#065f3e', // Hijau Utama SDIT Bina Mulia
+                            700: '#065f3e', // Hijau SDIT Bina Mulia
                             800: '#04472c',
                             900: '#022c1b',
                         },
@@ -39,58 +39,59 @@
 
     <style>
         @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(12px); }
+            from { opacity: 0; transform: translateY(14px); }
             to { opacity: 1; transform: translateY(0); }
         }
         .animate-fade-in-up { animation: fadeInUp 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
         html { scroll-behavior: smooth; }
+        ::selection { background-color: #10b981; color: #ffffff; }
     </style>
 </head>
 <body class="bg-slate-100 text-slate-800 min-h-screen flex flex-col font-sans antialiased">
 
     <!-- ==========================================
-         GATEWAY / HALAMAN LOGIN PEMILIHAN HAK AKSES
+         1. PORTAL GATEWAY / HALAMAN LOGIN
          ========================================== -->
     <div id="portal-gateway" class="min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-brand-900 via-brand-800 to-emerald-950 animate-fade-in-up">
         <div class="max-w-md w-full bg-white rounded-3xl p-8 shadow-2xl border border-white/20 text-center relative overflow-hidden">
-            <div class="w-20 h-20 bg-white rounded-2xl mx-auto flex items-center justify-center p-2 shadow-lg ring-4 ring-gold-400/40 mb-4">
+            <div class="w-20 h-20 bg-white rounded-2xl mx-auto flex items-center justify-center p-2 shadow-lg ring-4 ring-gold-400/40 mb-4 transition-transform hover:scale-105 duration-300">
                 <img src="logo-sdit.png" alt="Logo SDIT Bina Mulia" class="w-full h-full object-contain" onerror="this.src='https://via.placeholder.com/64?text=SDIT'">
             </div>
             
             <h1 class="text-2xl font-black text-slate-800 tracking-tight">SuratIzin<span class="text-emerald-600">Ku</span></h1>
-            <p class="text-xs text-slate-500 mt-1 mb-6">SDIT Bina Mulia Depok — Sistem Presensi & Tracking Tugas Susulan</p>
+            <p class="text-xs text-slate-500 mt-1 mb-6">SDIT Bina Mulia Depok — Presensi & Tracking Tugas Susulan</p>
 
             <div class="space-y-3">
-                <p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Pilih Portal Masuk</p>
+                <p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Pilih Akses Masuk</p>
                 
-                <button onclick="loginAs('ortu')" class="w-full p-4 bg-slate-50 hover:bg-emerald-50 border border-slate-200 hover:border-emerald-300 rounded-2xl flex items-center justify-between transition-all duration-200 group text-left">
-                    <div class="flex items-center space-x-3">
+                <button onclick="loginAs('ortu')" class="w-full p-4 bg-slate-50 hover:bg-emerald-50 border border-slate-200 hover:border-emerald-300 rounded-2xl flex items-center justify-between transition-all duration-200 group text-left shadow-sm hover:shadow">
+                    <div class="flex items-center space-x-3.5">
                         <span class="text-2xl p-2 bg-emerald-100 rounded-xl">👨‍👩‍👦</span>
                         <div>
                             <div class="font-bold text-sm text-slate-800 group-hover:text-emerald-700">Portal Orang Tua</div>
-                            <div class="text-[11px] text-slate-500">Izin anak & cek tugas susulan</div>
+                            <div class="text-[11px] text-slate-500">Izin anak & checklist tugas susulan</div>
                         </div>
                     </div>
                     <span class="text-slate-400 group-hover:translate-x-1 transition-transform">➔</span>
                 </button>
 
-                <button onclick="loginAs('guru')" class="w-full p-4 bg-slate-50 hover:bg-emerald-50 border border-slate-200 hover:border-emerald-300 rounded-2xl flex items-center justify-between transition-all duration-200 group text-left">
-                    <div class="flex items-center space-x-3">
+                <button onclick="loginAs('guru')" class="w-full p-4 bg-slate-50 hover:bg-emerald-50 border border-slate-200 hover:border-emerald-300 rounded-2xl flex items-center justify-between transition-all duration-200 group text-left shadow-sm hover:shadow">
+                    <div class="flex items-center space-x-3.5">
                         <span class="text-2xl p-2 bg-emerald-100 rounded-xl">👩‍🏫</span>
                         <div>
                             <div class="font-bold text-sm text-slate-800 group-hover:text-emerald-700">Portal Wali Kelas</div>
-                            <div class="text-[11px] text-slate-500">Verifikasi izin & atur tugas</div>
+                            <div class="text-[11px] text-slate-500">Verifikasi izin & input tugas kelas</div>
                         </div>
                     </div>
                     <span class="text-slate-400 group-hover:translate-x-1 transition-transform">➔</span>
                 </button>
 
-                <button onclick="loginAs('admin')" class="w-full p-4 bg-slate-50 hover:bg-emerald-50 border border-slate-200 hover:border-emerald-300 rounded-2xl flex items-center justify-between transition-all duration-200 group text-left">
-                    <div class="flex items-center space-x-3">
+                <button onclick="loginAs('admin')" class="w-full p-4 bg-slate-50 hover:bg-emerald-50 border border-slate-200 hover:border-emerald-300 rounded-2xl flex items-center justify-between transition-all duration-200 group text-left shadow-sm hover:shadow">
+                    <div class="flex items-center space-x-3.5">
                         <span class="text-2xl p-2 bg-amber-100 rounded-xl">⚙️</span>
                         <div>
                             <div class="font-bold text-sm text-slate-800 group-hover:text-amber-700">Portal Admin / TU</div>
-                            <div class="text-[11px] text-slate-500">Rekap data & laporan sekolah</div>
+                            <div class="text-[11px] text-slate-500">Kelola master data siswa/guru & rekap</div>
                         </div>
                     </div>
                     <span class="text-slate-400 group-hover:translate-x-1 transition-transform">➔</span>
@@ -101,12 +102,12 @@
 
 
     <!-- ==========================================
-         MAIN DASHBOARD CONTAINER (SISTEM UTAMA)
+         2. DASHBOARD UTAMA
          ========================================== -->
     <div id="app-dashboard" class="hidden flex-col min-h-screen">
         
-        <!-- MAIN HEADER -->
-        <header class="bg-brand-800 text-white shadow-lg sticky top-0 z-50 border-b border-emerald-600/30">
+        <!-- HEADER APPLIKASI -->
+        <header class="bg-brand-800 text-white shadow-lg sticky top-0 z-40 border-b border-emerald-600/30">
             <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
                 <div class="flex items-center space-x-3">
                     <div class="w-10 h-10 bg-white rounded-xl flex items-center justify-center p-1 shadow shrink-0">
@@ -119,81 +120,89 @@
                 </div>
 
                 <div class="flex items-center gap-3">
-                    <span id="user-badge" class="hidden md:inline-block text-xs font-bold bg-brand-900/80 px-3 py-1 rounded-full border border-emerald-600/50 text-emerald-200"></span>
-                    <button onclick="logout()" class="px-3.5 py-1.5 bg-rose-600/90 hover:bg-rose-700 text-white text-xs font-bold rounded-xl transition shadow">
+                    <span id="user-badge" class="hidden md:inline-block text-xs font-bold bg-brand-900/80 px-3.5 py-1 rounded-full border border-emerald-600/50 text-emerald-200"></span>
+                    <button onclick="logout()" class="px-3.5 py-1.5 bg-rose-600 hover:bg-rose-700 text-white text-xs font-bold rounded-xl transition shadow active:scale-95">
                         🔒 Keluar / Ganti Akses
                     </button>
                 </div>
             </div>
         </header>
 
-        <!-- DASHBOARD CONTENT -->
+        <!-- KONTEN UTAMA DASHBOARD -->
         <main class="max-w-7xl mx-auto px-4 py-8 flex-1 w-full">
 
-            <!-- 1. PORTAL ORANG TUA -->
+            <!-- ==========================================
+                 PORTAL ORANG TUA
+                 ========================================== -->
             <section id="role-ortu" class="space-y-6 hidden">
+                <!-- AKUN ANANDA INFO CARD -->
+                <div class="bg-gradient-to-r from-brand-800 to-emerald-800 rounded-3xl p-6 text-white shadow-lg flex flex-wrap justify-between items-center gap-4 border border-emerald-500/20">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 bg-white/10 rounded-2xl flex items-center justify-center text-2xl backdrop-blur">🎓</div>
+                        <div>
+                            <span class="text-[11px] text-emerald-200 font-bold uppercase tracking-wider block">Profil Terdaftar</span>
+                            <h2 class="text-lg font-black">Aditya Pratama — Kelas 3B</h2>
+                            <p class="text-xs text-emerald-100/80 mt-0.5">Wali Kelas: Bu Nurul, S.Pd.</p>
+                        </div>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur px-4 py-2 rounded-2xl text-center border border-white/10">
+                        <span class="text-[10px] text-emerald-200 block font-bold">Progress Tugas Susulan</span>
+                        <span class="text-xl font-black text-gold-400" id="ortu-siswa-percent">0%</span>
+                    </div>
+                </div>
+
+                <!-- FORM PENGAJUAN IZIN DENGAN UPLOAD SURAT -->
                 <div class="bg-white rounded-3xl p-6 md:p-8 shadow-sm border border-slate-200/80">
                     <div class="border-b border-slate-100 pb-4 mb-6">
                         <h2 class="text-lg font-extrabold text-slate-800 flex items-center gap-2">
                             <span>📝</span> Form Pengajuan Surat Izin Digital
                         </h2>
-                        <p class="text-xs text-slate-500 mt-1">Kirim pemberitahuan izin/sakit langsung ke wali kelas tanpa perlu surat kertas.</p>
+                        <p class="text-xs text-slate-500 mt-1">Gunakan formulir ini jika ananda sakit, mengikuti lomba, atau kegiatan lainnya.</p>
                     </div>
 
                     <form onsubmit="submitIzin(event)" class="space-y-5">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-                            <div>
-                                <label class="block text-xs font-bold text-slate-700 mb-1.5">Nama Lengkap Siswa</label>
-                                <input type="text" id="ortu-nama" required value="Aditya Pratama" class="w-full px-4 py-2.5 text-sm bg-slate-50 border border-slate-200 rounded-2xl focus:ring-2 focus:ring-emerald-500 focus:outline-none">
-                            </div>
-                            <div>
-                                <label class="block text-xs font-bold text-slate-700 mb-1.5">Kelas & Wali Kelas</label>
-                                <select id="ortu-kelas" class="w-full px-4 py-2.5 text-sm bg-slate-50 border border-slate-200 rounded-2xl focus:ring-2 focus:ring-emerald-500 focus:outline-none">
-                                    <option value="3B">Kelas 3B — Bu Nurul, S.Pd.</option>
-                                    <option value="3A">Kelas 3A — Pak Rahmat, S.Pd.</option>
-                                </select>
-                            </div>
-                        </div>
-
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
                             <div>
                                 <label class="block text-xs font-bold text-slate-700 mb-1.5">Kategori Ketidakhadiran</label>
-                                <select id="ortu-jenis" class="w-full px-4 py-2.5 text-sm bg-slate-50 border border-slate-200 rounded-2xl focus:ring-2 focus:ring-emerald-500 focus:outline-none">
+                                <select id="ortu-jenis" class="w-full px-4 py-2.5 text-sm bg-slate-50 border border-slate-200 rounded-2xl focus:ring-2 focus:ring-emerald-500 focus:outline-none transition">
                                     <option value="Sakit">Sakit (Butuh Istirahat)</option>
-                                    <option value="Izin">Izin Acara Keluarga / Kepentingan</option>
+                                    <option value="Lomba / Dispensasi">Lomba / Kegiatan Resmi</option>
+                                    <option value="Izin Keluarga">Izin Kepentingan Keluarga</option>
                                 </select>
                             </div>
                             <div>
                                 <label class="block text-xs font-bold text-slate-700 mb-1.5">Mulai Tanggal</label>
-                                <input type="date" id="ortu-tgl-mulai" required value="2026-09-21" class="w-full px-4 py-2.5 text-sm bg-slate-50 border border-slate-200 rounded-2xl focus:ring-2 focus:ring-emerald-500 focus:outline-none">
+                                <input type="date" id="ortu-tgl-mulai" required value="2026-09-21" class="w-full px-4 py-2.5 text-sm bg-slate-50 border border-slate-200 rounded-2xl focus:ring-2 focus:ring-emerald-500 focus:outline-none transition">
                             </div>
                             <div>
                                 <label class="block text-xs font-bold text-slate-700 mb-1.5">Sampai Tanggal</label>
-                                <input type="date" id="ortu-tgl-selesai" required value="2026-09-22" class="w-full px-4 py-2.5 text-sm bg-slate-50 border border-slate-200 rounded-2xl focus:ring-2 focus:ring-emerald-500 focus:outline-none">
+                                <input type="date" id="ortu-tgl-selesai" required value="2026-09-22" class="w-full px-4 py-2.5 text-sm bg-slate-50 border border-slate-200 rounded-2xl focus:ring-2 focus:ring-emerald-500 focus:outline-none transition">
                             </div>
                         </div>
 
                         <div>
-                            <label class="block text-xs font-bold text-slate-700 mb-1.5">Alasan / Catatan Orang Tua</label>
-                            <textarea id="ortu-alasan" rows="2" class="w-full px-4 py-2.5 text-sm bg-slate-50 border border-slate-200 rounded-2xl focus:ring-2 focus:ring-emerald-500 focus:outline-none">Ananda demam dan flu, disarankan istirahat oleh dokter.</textarea>
+                            <label class="block text-xs font-bold text-slate-700 mb-1.5">Lampirkan Surat Bukti (Dokter / Undangan Lomba / Surat Izin)</label>
+                            <input type="file" id="ortu-file" accept="image/*,.pdf" onchange="previewFile(event)" class="w-full px-4 py-2 text-xs bg-slate-50 border border-slate-200 rounded-2xl file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-bold file:bg-emerald-100 file:text-emerald-800 hover:file:bg-emerald-200 cursor-pointer">
+                            <p class="text-[11px] text-slate-400 mt-1">*Format JPG, PNG, atau PDF. Opsional namun disarankan.</p>
                         </div>
 
-                        <button type="submit" class="px-8 py-3 bg-brand-700 hover:bg-brand-800 text-white font-bold text-sm rounded-2xl shadow-lg transition">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1.5">Alasan / Catatan Singkat Orang Tua</label>
+                            <textarea id="ortu-alasan" rows="2" class="w-full px-4 py-2.5 text-sm bg-slate-50 border border-slate-200 rounded-2xl focus:ring-2 focus:ring-emerald-500 focus:outline-none">Ananda demam dan perlu istirahat sesuai saran dokter.</textarea>
+                        </div>
+
+                        <button type="submit" class="px-8 py-3 bg-brand-700 hover:bg-brand-800 text-white font-bold text-sm rounded-2xl shadow-lg transition active:scale-95">
                             🚀 Kirim Surat Izin Ke Wali Kelas
                         </button>
                     </form>
                 </div>
 
-                <!-- CHECKLIST TUGAS ANAK -->
-                <div class="bg-gradient-to-r from-brand-800 to-emerald-800 rounded-3xl p-6 md:p-8 text-white shadow-xl">
-                    <div class="flex justify-between items-center flex-wrap gap-4 mb-4">
-                        <div>
-                            <h3 class="text-xl font-black">🎯 Misi Tugas Susulan Ananda</h3>
-                            <p class="text-xs text-emerald-100 mt-1">Daftar materi & tugas yang perlu dibantu orang tua di rumah.</p>
-                        </div>
-                        <div class="text-2xl font-black text-gold-400" id="ortu-siswa-percent">0% Selesai</div>
-                    </div>
-                    <div id="ortu-tugas-list" class="space-y-3 mt-4 text-slate-800"></div>
+                <!-- CHECKLIST TUGAS SUSULAN ANAK -->
+                <div class="bg-white rounded-3xl p-6 md:p-8 shadow-sm border border-slate-200/80">
+                    <h3 class="font-bold text-sm text-slate-800 mb-4 flex items-center gap-2">
+                        <span>📋</span> Checklist "Tugas Susulan" Ananda
+                    </h3>
+                    <div id="ortu-tugas-list" class="space-y-3"></div>
                 </div>
 
                 <!-- RIWAYAT IZIN -->
@@ -204,23 +213,27 @@
             </section>
 
 
-            <!-- 2. PORTAL GURU / WALI KELAS -->
+            <!-- ==========================================
+                 PORTAL GURU / WALI KELAS
+                 ========================================== -->
             <section id="role-guru" class="space-y-6 hidden">
+                <!-- ANTREAN VERIFIKASI IZIN DENGAN PREVIEW SURAT -->
                 <div class="bg-white rounded-3xl p-6 shadow-sm border border-slate-200/80">
                     <div class="flex justify-between items-center border-b border-slate-100 pb-4 mb-4">
                         <div>
                             <h2 class="text-base font-extrabold text-slate-800">📥 Antrean Permohonan Izin Siswa</h2>
-                            <p class="text-xs text-slate-500">Verifikasi surat izin dari orang tua siswa kelas 3B.</p>
+                            <p class="text-xs text-slate-500">Verifikasi surat izin & lampiran berkas dari orang tua kelas 3B.</p>
                         </div>
                         <span class="text-xs bg-amber-100 text-amber-800 font-extrabold px-3 py-1.5 rounded-full" id="guru-count-pending">0 Perlu Verifikasi</span>
                     </div>
                     <div id="guru-izin-list" class="space-y-3"></div>
                 </div>
 
+                <!-- INPUT TUGAS SUSULAN -->
                 <div class="bg-white rounded-3xl p-6 shadow-sm border border-slate-200/80">
                     <div class="border-b border-slate-100 pb-4 mb-5">
                         <h2 class="text-base font-extrabold text-slate-800">➕ Input Checklist "Tugas Susulan"</h2>
-                        <p class="text-xs text-slate-500">Masukkan materi/tugas yang tertinggal agar otomatis muncul di aplikasi siswa.</p>
+                        <p class="text-xs text-slate-500">Masukkan materi/tugas yang tertinggal agar otomatis menjadi checklist siswa.</p>
                     </div>
 
                     <form onsubmit="submitTugasGrup(event)" class="space-y-4">
@@ -239,22 +252,24 @@
                             </div>
                         </div>
                         <button type="submit" class="px-6 py-2.5 bg-slate-900 hover:bg-black text-white text-xs font-bold rounded-2xl transition">
-                            + Tambahkan Ke Misi Siswa
+                            + Tambahkan Ke Checklist Siswa
                         </button>
                     </form>
                 </div>
             </section>
 
 
-            <!-- 3. PORTAL ADMIN / TATA USAHA -->
+            <!-- ==========================================
+                 PORTAL ADMIN / TATA USAHA (KELOLA MASTER DATA)
+                 ========================================== -->
             <section id="role-admin" class="space-y-6 hidden">
-                <!-- STATISTIK UTAMA SCHOOL-WIDE -->
+                <!-- STATISTIK SEKOLAH -->
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
                     <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm flex items-center space-x-4">
                         <div class="w-12 h-12 bg-emerald-100 text-emerald-800 rounded-2xl flex items-center justify-center text-2xl font-bold">🏫</div>
                         <div>
-                            <div class="text-xs text-slate-500 font-bold uppercase">Total Siswa SDIT</div>
-                            <div class="text-2xl font-black text-slate-800 mt-0.5">320 Siswa</div>
+                            <div class="text-xs text-slate-500 font-bold uppercase">Total Siswa Terdaftar</div>
+                            <div class="text-2xl font-black text-slate-800 mt-0.5" id="admin-stat-siswa">320 Siswa</div>
                         </div>
                     </div>
                     <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm flex items-center space-x-4">
@@ -265,27 +280,32 @@
                         </div>
                     </div>
                     <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm flex items-center space-x-4">
-                        <div class="w-12 h-12 bg-blue-100 text-blue-800 rounded-2xl flex items-center justify-center text-2xl font-bold">📊</div>
+                        <div class="w-12 h-12 bg-blue-100 text-blue-800 rounded-2xl flex items-center justify-center text-2xl font-bold">👩‍🏫</div>
                         <div>
-                            <div class="text-xs text-slate-500 font-bold uppercase">Tugas Susulan Selesai</div>
-                            <div class="text-2xl font-black text-blue-600 mt-0.5" id="admin-stat-tugas">50%</div>
+                            <div class="text-xs text-slate-500 font-bold uppercase">Total Wali Kelas</div>
+                            <div class="text-2xl font-black text-blue-600 mt-0.5">18 Guru</div>
                         </div>
                     </div>
                 </div>
 
-                <!-- TABEL REKAPITULASI PRESENSI TINGKAT SEKOLAH -->
+                <!-- TABS ADMIN: MASTER DATA VS REKAP -->
                 <div class="bg-white rounded-3xl p-6 shadow-sm border border-slate-200/80">
-                    <div class="flex justify-between items-center mb-5 border-b border-slate-100 pb-4">
-                        <div>
-                            <h2 class="text-base font-extrabold text-slate-800">📊 Rekapitulasi Presensi & Tugas Susulan Sekolah</h2>
-                            <p class="text-xs text-slate-500 mt-0.5">Pantauan seluruh pengajuan ketidakhadiran di SDIT Bina Mulia Depok.</p>
+                    <div class="flex justify-between items-center border-b border-slate-100 pb-4 mb-5 flex-wrap gap-3">
+                        <div class="flex space-x-2">
+                            <button onclick="switchAdminTab('rekap')" id="admin-tab-rekap" class="px-4 py-2 bg-emerald-700 text-white font-bold text-xs rounded-xl shadow">
+                                📊 Rekapitulasi Presensi
+                            </button>
+                            <button onclick="switchAdminTab('siswa')" id="admin-tab-siswa" class="px-4 py-2 bg-slate-100 text-slate-600 font-bold text-xs rounded-xl hover:bg-slate-200">
+                                🎓 Kelola Master Data Siswa
+                            </button>
                         </div>
-                        <button onclick="alert('Laporan Format Excel/PDF Berhasil Di-generate!')" class="px-4 py-2 bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-bold rounded-xl transition flex items-center gap-2">
-                            <span>📄</span> Cetak Laporan (PDF)
+                        <button onclick="alert('File Laporan Presensi Resmi SDIT Bina Mulia Berhasil Diunduh (PDF/Excel)!')" class="px-4 py-2 bg-emerald-800 hover:bg-emerald-900 text-white text-xs font-bold rounded-xl shadow flex items-center gap-2">
+                            <span>📄</span> Cetak Laporan Resmi Sekolah
                         </button>
                     </div>
 
-                    <div class="overflow-x-auto">
+                    <!-- SUB-VIEW 1: REKAPITULASI PRESENSI GLOBAL -->
+                    <div id="admin-sub-rekap" class="overflow-x-auto">
                         <table class="w-full text-left border-collapse text-xs">
                             <thead>
                                 <tr class="bg-slate-50 border-b border-slate-200 text-slate-600 uppercase font-bold">
@@ -293,11 +313,36 @@
                                     <th class="p-3">Kelas</th>
                                     <th class="p-3">Jenis Izin</th>
                                     <th class="p-3">Tanggal</th>
-                                    <th class="p-3">Status Verifikasi</th>
+                                    <th class="p-3">Lampiran</th>
+                                    <th class="p-3">Status</th>
                                 </tr>
                             </thead>
                             <tbody id="admin-tabel-rekap" class="divide-y divide-slate-100"></tbody>
                         </table>
+                    </div>
+
+                    <!-- SUB-VIEW 2: KELOLA MASTER DATA SISWA (FITUR KHUSUS TU) -->
+                    <div id="admin-sub-siswa" class="hidden space-y-4">
+                        <div class="flex justify-between items-center">
+                            <h3 class="font-extrabold text-sm text-slate-800">Daftar Induk Siswa & Akun Orang Tua</h3>
+                            <button onclick="tambahSiswaDummy()" class="px-3.5 py-1.5 bg-brand-700 hover:bg-brand-800 text-white text-xs font-bold rounded-xl shadow">
+                                + Tambah Siswa Baru
+                            </button>
+                        </div>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left border-collapse text-xs">
+                                <thead>
+                                    <tr class="bg-slate-50 border-b border-slate-200 text-slate-600 uppercase font-bold">
+                                        <th class="p-3">NISN</th>
+                                        <th class="p-3">Nama Siswa</th>
+                                        <th class="p-3">Kelas</th>
+                                        <th class="p-3">Wali Kelas</th>
+                                        <th class="p-3">Aksi TU</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="admin-tabel-siswa" class="divide-y divide-slate-100"></tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -322,9 +367,33 @@
 
     </div>
 
-    <!-- SCRIPT LOGIC -->
+    <!-- MODAL PREVIEW SURAT BUKTI -->
+    <div id="modal-preview" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-lg w-full p-6 shadow-2xl space-y-4">
+            <div class="flex justify-between items-center border-b pb-3">
+                <h3 class="font-extrabold text-slate-800 text-sm">📄 Pratinjau Surat Lampiran Bukti</h3>
+                <button onclick="closeModal()" class="text-slate-400 hover:text-slate-600 font-bold text-lg">✕</button>
+            </div>
+            <div id="modal-content" class="bg-slate-100 rounded-2xl p-4 flex items-center justify-center min-h-[220px]">
+                <!-- Dynamic Content -->
+            </div>
+            <button onclick="closeModal()" class="w-full py-2.5 bg-slate-800 text-white text-xs font-bold rounded-xl">
+                Tutup Pratinjau
+            </button>
+        </div>
+    </div>
+
+
+    <!-- SCRIPT LOGIC INTERAKTIF -->
     <script>
+        let uploadedFileUrl = null;
+
         let state = {
+            masterSiswa: [
+                { nisn: "001239811", nama: "Aditya Pratama", kelas: "3B", guru: "Bu Nurul, S.Pd." },
+                { nisn: "001239812", nama: "Siti Aisyah", kelas: "3B", guru: "Bu Nurul, S.Pd." },
+                { nisn: "001239813", nama: "Budi Santoso", kelas: "3A", guru: "Pak Rahmat, S.Pd." }
+            ],
             izin: [
                 {
                     id: 1,
@@ -333,7 +402,8 @@
                     jenis: "Sakit",
                     mulai: "2026-09-21",
                     selesai: "2026-09-22",
-                    alasan: "Demam dan flu, disarankan istirahat oleh dokter.",
+                    alasan: "Demam dan perlu istirahat sesuai saran dokter.",
+                    file: "Surat_Dokter_Aditya.jpg",
                     status: "Disetujui"
                 }
             ],
@@ -353,9 +423,9 @@
             dashboard.classList.add('flex', 'animate-fade-in-up');
 
             const roleTitles = {
-                ortu: 'Portal Orang Tua (Wali Murid)',
-                guru: 'Portal Wali Kelas (Bu Nurul, S.Pd.)',
-                admin: 'Portal Administrator / Tata Usaha'
+                ortu: 'Portal Orang Tua (Aditya Pratama - Kelas 3B)',
+                guru: 'Portal Wali Kelas (Bu Nurul, S.Pd. - Kelas 3B)',
+                admin: 'Portal Administrator / Tata Usaha (SDIT Bina Mulia)'
             };
 
             document.getElementById('header-role-title').textContent = roleTitles[role];
@@ -374,20 +444,30 @@
             currentRole = null;
         }
 
+        function previewFile(e) {
+            const file = e.target.files[0];
+            if (file) {
+                uploadedFileUrl = file.name;
+            }
+        }
+
         function submitIzin(e) {
             e.preventDefault();
             const newIzin = {
                 id: Date.now(),
-                nama: document.getElementById("ortu-nama").value,
-                kelas: document.getElementById("ortu-kelas").value,
+                nama: "Aditya Pratama", // Otomatis dari akun terdaftar
+                kelas: "3B",
                 jenis: document.getElementById("ortu-jenis").value,
                 mulai: document.getElementById("ortu-tgl-mulai").value,
                 selesai: document.getElementById("ortu-tgl-selesai").value,
                 alasan: document.getElementById("ortu-alasan").value,
+                file: uploadedFileUrl || "Surat_Izin.pdf",
                 status: "Menunggu Verifikasi"
             };
 
             state.izin.unshift(newIzin);
+            uploadedFileUrl = null;
+            document.getElementById("ortu-file").value = "";
             alert("Surat Izin Berhasil Terkirim ke Wali Kelas!");
             renderAll();
         }
@@ -433,13 +513,62 @@
             }
         }
 
+        function openModalFile(fileName) {
+            const modal = document.getElementById('modal-preview');
+            const content = document.getElementById('modal-content');
+            content.innerHTML = `
+                <div class="text-center space-y-2">
+                    <div class="text-4xl">🖼️</div>
+                    <div class="font-bold text-xs text-slate-800">${fileName}</div>
+                    <div class="text-[11px] text-slate-400">Simulasi Tampilan Lampiran Bukti Surat</div>
+                </div>
+            `;
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeModal() {
+            document.getElementById('modal-preview').classList.add('hidden');
+            document.getElementById('modal-preview').classList.remove('flex');
+        }
+
+        function switchAdminTab(tab) {
+            if (tab === 'rekap') {
+                document.getElementById('admin-sub-rekap').classList.remove('hidden');
+                document.getElementById('admin-sub-siswa').classList.add('hidden');
+                document.getElementById('admin-tab-rekap').className = "px-4 py-2 bg-emerald-700 text-white font-bold text-xs rounded-xl shadow";
+                document.getElementById('admin-tab-siswa').className = "px-4 py-2 bg-slate-100 text-slate-600 font-bold text-xs rounded-xl hover:bg-slate-200";
+            } else {
+                document.getElementById('admin-sub-rekap').classList.add('hidden');
+                document.getElementById('admin-sub-siswa').classList.remove('hidden');
+                document.getElementById('admin-tab-rekap').className = "px-4 py-2 bg-slate-100 text-slate-600 font-bold text-xs rounded-xl hover:bg-slate-200";
+                document.getElementById('admin-tab-siswa').className = "px-4 py-2 bg-emerald-700 text-white font-bold text-xs rounded-xl shadow";
+            }
+        }
+
+        function tambahSiswaDummy() {
+            const nama = prompt("Masukkan Nama Siswa Baru:");
+            if (nama) {
+                state.masterSiswa.push({
+                    nisn: `0012398${state.masterSiswa.length + 10}`,
+                    nama: nama,
+                    kelas: "3B",
+                    guru: "Bu Nurul, S.Pd."
+                });
+                renderAll();
+            }
+        }
+
         function renderAll() {
             // 1. Ortu View
             const ortuList = document.getElementById("ortu-riwayat-list");
             ortuList.innerHTML = state.izin.map(i => `
                 <div class="p-4 border rounded-2xl flex justify-between items-center bg-slate-50/50">
                     <div>
-                        <span class="font-extrabold text-sm text-slate-800">${i.nama} (${i.kelas})</span>
+                        <div class="flex items-center gap-2">
+                            <span class="font-extrabold text-sm text-slate-800">${i.nama} (${i.kelas})</span>
+                            <span class="text-[10px] px-2.5 py-0.5 rounded-full font-bold ${i.jenis === 'Sakit' ? 'bg-rose-100 text-rose-700' : 'bg-sky-100 text-sky-700'}">${i.jenis}</span>
+                        </div>
                         <div class="text-xs text-slate-500 mt-1">🗓️ ${i.mulai} s/d ${i.selesai} — "${i.alasan}"</div>
                     </div>
                     <span class="text-xs font-bold px-3 py-1 rounded-full ${i.status === 'Disetujui' ? 'bg-emerald-100 text-emerald-800' : 'bg-amber-100 text-amber-800'}">${i.status}</span>
@@ -450,9 +579,9 @@
             const siswaTugas = state.tugas.filter(t => t.namaSiswa === "Aditya Pratama");
             const ortuTugasList = document.getElementById("ortu-tugas-list");
             ortuTugasList.innerHTML = siswaTugas.map(t => `
-                <div onclick="toggleTugas(${t.id})" class="p-3.5 bg-white rounded-2xl flex justify-between items-center cursor-pointer shadow-sm">
+                <div onclick="toggleTugas(${t.id})" class="p-4 bg-slate-50 border rounded-2xl flex justify-between items-center cursor-pointer hover:border-amber-400 transition">
                     <div class="flex items-center space-x-3">
-                        <div class="w-6 h-6 rounded-lg border-2 flex items-center justify-center font-black text-xs ${t.selesai ? 'bg-emerald-600 border-emerald-600 text-white' : 'border-slate-300'}">
+                        <div class="w-6 h-6 rounded-lg border-2 flex items-center justify-center font-black text-xs ${t.selesai ? 'bg-emerald-600 border-emerald-600 text-white' : 'border-slate-300 bg-white'}">
                             ${t.selesai ? '✓' : ''}
                         </div>
                         <div>
@@ -476,13 +605,17 @@
             guruList.innerHTML = state.izin.map(i => `
                 <div class="p-4 border rounded-2xl flex flex-wrap justify-between items-center gap-3 bg-slate-50/50">
                     <div>
-                        <span class="font-extrabold text-sm text-slate-800">${i.nama} — Kelas ${i.kelas}</span>
+                        <div class="flex items-center gap-2">
+                            <span class="font-extrabold text-sm text-slate-800">${i.nama} — Kelas ${i.kelas}</span>
+                            <span class="text-[10px] font-bold px-2.5 py-0.5 rounded-full ${i.jenis === 'Sakit' ? 'bg-rose-100 text-rose-700' : 'bg-sky-100 text-sky-700'}">${i.jenis}</span>
+                        </div>
                         <div class="text-xs text-slate-600 mt-1">Tgl: ${i.mulai} s/d ${i.selesai} | Ket: "${i.alasan}"</div>
+                        ${i.file ? `<button onclick="openModalFile('${i.file}')" class="mt-2 text-[11px] text-emerald-700 font-bold underline flex items-center gap-1">📎 Lihat Surat Lampiran (${i.file})</button>` : ''}
                     </div>
-                    <div>
+                    <div class="flex items-center gap-2">
                         ${i.status === 'Menunggu Verifikasi' ? `
-                            <button onclick="verifikasiIzin(${i.id}, 'Disetujui')" class="px-3 py-1.5 bg-emerald-600 text-white text-xs font-bold rounded-xl">✓ Setujui</button>
-                            <button onclick="verifikasiIzin(${i.id}, 'Ditolak')" class="px-3 py-1.5 bg-rose-600 text-white text-xs font-bold rounded-xl">✕ Tolak</button>
+                            <button onclick="verifikasiIzin(${i.id}, 'Disetujui')" class="px-3.5 py-1.5 bg-emerald-600 text-white text-xs font-bold rounded-xl active:scale-95">✓ Setujui</button>
+                            <button onclick="verifikasiIzin(${i.id}, 'Ditolak')" class="px-3.5 py-1.5 bg-rose-600 text-white text-xs font-bold rounded-xl active:scale-95">✕ Tolak</button>
                         ` : `<span class="text-xs font-bold px-3 py-1 rounded-full ${i.status === 'Disetujui' ? 'bg-emerald-100 text-emerald-800' : 'bg-rose-100 text-rose-800'}">${i.status}</span>`}
                     </div>
                 </div>
@@ -493,8 +626,8 @@
             selectSiswa.innerHTML = approvedSiswa.map(s => `<option value="${s}">${s}</option>`).join("");
 
             // 3. Admin View
+            document.getElementById("admin-stat-siswa").textContent = `${state.masterSiswa.length} Siswa`;
             document.getElementById("admin-stat-izin").textContent = `${state.izin.length} Surat`;
-            document.getElementById("admin-stat-tugas").textContent = `${pct}%`;
 
             const adminTabel = document.getElementById("admin-tabel-rekap");
             adminTabel.innerHTML = state.izin.map(i => `
@@ -503,7 +636,22 @@
                     <td class="p-3 text-slate-600">${i.kelas}</td>
                     <td class="p-3 font-semibold text-emerald-700">${i.jenis}</td>
                     <td class="p-3 text-slate-500">${i.mulai} - ${i.selesai}</td>
+                    <td class="p-3">${i.file ? `<button onclick="openModalFile('${i.file}')" class="text-emerald-700 underline font-bold">📄 File</button>` : '-'}</td>
                     <td class="p-3"><span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold ${i.status === 'Disetujui' ? 'bg-emerald-100 text-emerald-800' : 'bg-amber-100 text-amber-800'}">${i.status}</span></td>
+                </tr>
+            `).join("");
+
+            // Admin Master Data Siswa
+            const adminMasterTable = document.getElementById("admin-tabel-siswa");
+            adminMasterTable.innerHTML = state.masterSiswa.map(s => `
+                <tr class="hover:bg-slate-50 transition">
+                    <td class="p-3 font-mono text-slate-500">${s.nisn}</td>
+                    <td class="p-3 font-bold text-slate-800">${s.nama}</td>
+                    <td class="p-3 text-slate-600">${s.kelas}</td>
+                    <td class="p-3 text-slate-500">${s.guru}</td>
+                    <td class="p-3">
+                        <button onclick="alert('Edit Data Siswa: ${s.nama}')" class="text-xs text-blue-600 font-bold underline">Edit</button>
+                    </td>
                 </tr>
             `).join("");
         }
