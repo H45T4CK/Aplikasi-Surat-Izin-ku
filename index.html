@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
     <script>
         tailwind.config = {
             theme: {
@@ -20,8 +21,8 @@
                             100: '#dcfce7',
                             500: '#10b981',
                             700: '#065f3e', // Hijau Utama SDIT Bina Mulia
-                            800: '#04472c', // Hijau Gelap Header
-                            900: '#022c1b',
+                            800: '#04472c', // Hijau Header
+                            900: '#022c1b', // Hijau Dark Footer
                         },
                         gold: {
                             400: '#fbbf24',
@@ -36,47 +37,57 @@
             }
         }
     </script>
+
+    <style>
+        /* ANIMASI SMOOTH CUSTOM */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(12px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-in-up {
+            animation: fadeInUp 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        /* Smooth scroll & selection */
+        html { scroll-behavior: smooth; }
+        ::selection { background-color: #10b981; color: #ffffff; }
+    </style>
 </head>
 <body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col antialiased">
 
-    <!-- TOP ANNOUNCEMENT BAR (IDENTIK DENGAN PORTAL SEKOLAH) -->
-    <div class="bg-brand-900 text-emerald-200 text-[11px] py-1.5 px-4 font-medium border-b border-brand-800 flex justify-between items-center">
-        <div class="max-w-7xl mx-auto w-full flex justify-between items-center">
-            <span class="flex items-center gap-2">
-                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                Portal Layanan Digital SDIT Bina Mulia Sawangan - Depok
-            </span>
-            <span class="hidden md:inline text-slate-300">T.A. 2026/2027 Ganjil</span>
-        </div>
-    </div>
-
     <!-- MAIN HEADER WITH SCHOOL LOGO -->
-    <header class="bg-brand-800/95 backdrop-blur-md text-white shadow-lg sticky top-0 z-50 border-b border-emerald-600/30">
-        <div class="max-w-7xl mx-auto px-4 py-3 flex flex-wrap justify-between items-center gap-4">
+    <header class="bg-brand-800/95 backdrop-blur-md text-white shadow-lg sticky top-0 z-50 border-b border-emerald-600/30 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 py-3.5 flex flex-wrap justify-between items-center gap-4">
             
             <!-- BRAND IDENTITY -->
             <div class="flex items-center space-x-3.5">
-                <div class="w-12 h-12 bg-white rounded-2xl flex items-center justify-center p-1 shadow-md ring-2 ring-gold-400/60 overflow-hidden shrink-0">
+                <div class="w-12 h-12 bg-white rounded-2xl flex items-center justify-center p-1 shadow-md ring-2 ring-gold-400/60 overflow-hidden shrink-0 transition-transform hover:scale-105 duration-300">
                     <img src="logo-sdit.png" alt="Logo SDIT Bina Mulia" class="w-full h-full object-contain" onerror="this.src='https://via.placeholder.com/48?text=SDIT'">
                 </div>
                 <div>
-                    <div class="flex items-center gap-2">
-                        <h1 class="font-extrabold text-xl tracking-tight leading-none text-white">SuratIzin<span class="text-gold-400">Ku</span></h1>
-                        <span class="bg-emerald-500/20 text-emerald-300 text-[10px] font-bold px-2 py-0.5 rounded-full border border-emerald-400/30">v2.0 Sync</span>
-                    </div>
-                    <p class="text-[11px] text-emerald-200/90 font-medium mt-0.5">Sistem Presensi & Tracking Tugas Susulan Siswa</p>
+                    <h1 class="font-extrabold text-xl tracking-tight leading-none text-white flex items-center gap-1.5">
+                        SuratIzin<span class="text-gold-400">Ku</span>
+                    </h1>
+                    <p class="text-xs text-emerald-200/90 font-medium mt-1">SDIT Bina Mulia Depok — Presensi & Tracking Tugas Susulan</p>
                 </div>
             </div>
 
-            <!-- FUTURISTIC ROLE SWITCHER TABS -->
+            <!-- ROLE SWITCHER TABS -->
             <div class="flex bg-brand-900/80 p-1.5 rounded-2xl border border-emerald-700/50 shadow-inner">
-                <button onclick="switchRole('ortu')" id="tab-ortu" class="role-tab px-4 py-2 rounded-xl text-xs font-bold transition-all duration-200 bg-emerald-600 text-white shadow-md flex items-center gap-2">
+                <button onclick="switchRole('ortu')" id="tab-ortu" class="role-tab px-4 py-2 rounded-xl text-xs font-bold transition-all duration-300 bg-emerald-600 text-white shadow-md flex items-center gap-2">
                     <span>👨‍👩‍👦</span> Orang Tua
                 </button>
-                <button onclick="switchRole('guru')" id="tab-guru" class="role-tab px-4 py-2 rounded-xl text-xs font-bold transition-all duration-200 text-emerald-200 hover:text-white flex items-center gap-2">
+                <button onclick="switchRole('guru')" id="tab-guru" class="role-tab px-4 py-2 rounded-xl text-xs font-bold transition-all duration-300 text-emerald-200 hover:text-white flex items-center gap-2">
                     <span>👩‍🏫</span> Wali Kelas
                 </button>
-                <button onclick="switchRole('siswa')" id="tab-siswa" class="role-tab px-4 py-2 rounded-xl text-xs font-bold transition-all duration-200 text-emerald-200 hover:text-white flex items-center gap-2">
+                <button onclick="switchRole('siswa')" id="tab-siswa" class="role-tab px-4 py-2 rounded-xl text-xs font-bold transition-all duration-300 text-emerald-200 hover:text-white flex items-center gap-2">
                     <span>🎓</span> Checklist Siswa
                 </button>
             </div>
@@ -90,8 +101,8 @@
         <!-- ==========================================
              ROLE 1: ORANG TUA (FORM PENGAJUAN IZIN)
              ========================================== -->
-        <section id="role-ortu" class="space-y-6">
-            <div class="bg-white rounded-3xl p-6 md:p-8 shadow-sm border border-slate-200/80 relative overflow-hidden">
+        <section id="role-ortu" class="space-y-6 animate-fade-in-up">
+            <div class="bg-white rounded-3xl p-6 md:p-8 shadow-sm hover:shadow-md transition-shadow duration-300 border border-slate-200/80 relative overflow-hidden">
                 <div class="absolute top-0 right-0 w-40 h-40 bg-emerald-50 rounded-full blur-3xl -z-10"></div>
                 
                 <div class="border-b border-slate-100 pb-4 mb-6 flex justify-between items-start flex-wrap gap-2">
@@ -108,11 +119,11 @@
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
                         <div>
                             <label class="block text-xs font-bold text-slate-700 mb-1.5">Nama Lengkap Siswa</label>
-                            <input type="text" id="ortu-nama" required value="Aditya Pratama" class="w-full px-4 py-2.5 text-sm bg-slate-50 border border-slate-200 rounded-2xl focus:ring-2 focus:ring-emerald-500 focus:bg-white focus:outline-none transition">
+                            <input type="text" id="ortu-nama" required value="Aditya Pratama" class="w-full px-4 py-2.5 text-sm bg-slate-50 border border-slate-200 rounded-2xl focus:ring-2 focus:ring-emerald-500 focus:bg-white focus:outline-none transition-all duration-200">
                         </div>
                         <div>
                             <label class="block text-xs font-bold text-slate-700 mb-1.5">Kelas & Wali Kelas</label>
-                            <select id="ortu-kelas" class="w-full px-4 py-2.5 text-sm bg-slate-50 border border-slate-200 rounded-2xl focus:ring-2 focus:ring-emerald-500 focus:bg-white focus:outline-none transition">
+                            <select id="ortu-kelas" class="w-full px-4 py-2.5 text-sm bg-slate-50 border border-slate-200 rounded-2xl focus:ring-2 focus:ring-emerald-500 focus:bg-white focus:outline-none transition-all duration-200">
                                 <option value="3B">Kelas 3B — Bu Nurul, S.Pd.</option>
                                 <option value="3A">Kelas 3A — Pak Rahmat, S.Pd.</option>
                             </select>
@@ -122,28 +133,28 @@
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
                         <div>
                             <label class="block text-xs font-bold text-slate-700 mb-1.5">Kategori Ketidakhadiran</label>
-                            <select id="ortu-jenis" class="w-full px-4 py-2.5 text-sm bg-slate-50 border border-slate-200 rounded-2xl focus:ring-2 focus:ring-emerald-500 focus:bg-white focus:outline-none transition">
+                            <select id="ortu-jenis" class="w-full px-4 py-2.5 text-sm bg-slate-50 border border-slate-200 rounded-2xl focus:ring-2 focus:ring-emerald-500 focus:bg-white focus:outline-none transition-all duration-200">
                                 <option value="Sakit">Sakit (Butuh Istirahat)</option>
                                 <option value="Izin">Izin Acara Keluarga / Kepentingan</option>
                             </select>
                         </div>
                         <div>
                             <label class="block text-xs font-bold text-slate-700 mb-1.5">Mulai Tanggal</label>
-                            <input type="date" id="ortu-tgl-mulai" required value="2026-09-21" class="w-full px-4 py-2.5 text-sm bg-slate-50 border border-slate-200 rounded-2xl focus:ring-2 focus:ring-emerald-500 focus:bg-white focus:outline-none transition">
+                            <input type="date" id="ortu-tgl-mulai" required value="2026-09-21" class="w-full px-4 py-2.5 text-sm bg-slate-50 border border-slate-200 rounded-2xl focus:ring-2 focus:ring-emerald-500 focus:outline-none transition-all duration-200">
                         </div>
                         <div>
                             <label class="block text-xs font-bold text-slate-700 mb-1.5">Sampai Tanggal</label>
-                            <input type="date" id="ortu-tgl-selesai" required value="2026-09-22" class="w-full px-4 py-2.5 text-sm bg-slate-50 border border-slate-200 rounded-2xl focus:ring-2 focus:ring-emerald-500 focus:bg-white focus:outline-none transition">
+                            <input type="date" id="ortu-tgl-selesai" required value="2026-09-22" class="w-full px-4 py-2.5 text-sm bg-slate-50 border border-slate-200 rounded-2xl focus:ring-2 focus:ring-emerald-500 focus:outline-none transition-all duration-200">
                         </div>
                     </div>
 
                     <div>
                         <label class="block text-xs font-bold text-slate-700 mb-1.5">Alasan / Catatan Orang Tua</label>
-                        <textarea id="ortu-alasan" rows="2" placeholder="Contoh: Ananda demam tinggi sejak semalam, sudah berobat ke dokter." class="w-full px-4 py-2.5 text-sm bg-slate-50 border border-slate-200 rounded-2xl focus:ring-2 focus:ring-emerald-500 focus:bg-white focus:outline-none transition">Ananda demam dan flu, disarankan istirahat oleh dokter.</textarea>
+                        <textarea id="ortu-alasan" rows="2" placeholder="Contoh: Ananda demam tinggi sejak semalam, sudah berobat ke dokter." class="w-full px-4 py-2.5 text-sm bg-slate-50 border border-slate-200 rounded-2xl focus:ring-2 focus:ring-emerald-500 focus:bg-white focus:outline-none transition-all duration-200">Ananda demam dan flu, disarankan istirahat oleh dokter.</textarea>
                     </div>
 
                     <div class="pt-2">
-                        <button type="submit" class="w-full md:w-auto px-8 py-3 bg-brand-700 hover:bg-brand-800 text-white font-bold text-sm rounded-2xl shadow-lg shadow-emerald-900/20 transition-all hover:scale-[1.01] active:scale-[0.99] flex items-center justify-center gap-2">
+                        <button type="submit" class="w-full md:w-auto px-8 py-3 bg-brand-700 hover:bg-brand-800 text-white font-bold text-sm rounded-2xl shadow-lg shadow-emerald-900/20 transition-all duration-200 hover:scale-[1.01] active:scale-[0.99] flex items-center justify-center gap-2">
                             <span>🚀</span> Kirim Surat Izin Ke Wali Kelas
                         </button>
                     </div>
@@ -151,7 +162,7 @@
             </div>
 
             <!-- RIWAYAT IZIN ORANG TUA -->
-            <div class="bg-white rounded-3xl p-6 shadow-sm border border-slate-200/80">
+            <div class="bg-white rounded-3xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300 border border-slate-200/80">
                 <h3 class="font-bold text-sm text-slate-800 mb-4 flex items-center gap-2">
                     <span>📌</span> Riwayat Surat Izin Ananda
                 </h3>
@@ -164,7 +175,7 @@
              ========================================== -->
         <section id="role-guru" class="space-y-6 hidden">
             <!-- ANTREAN VERIFIKASI IZIN -->
-            <div class="bg-white rounded-3xl p-6 shadow-sm border border-slate-200/80">
+            <div class="bg-white rounded-3xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300 border border-slate-200/80">
                 <div class="flex justify-between items-center border-b border-slate-100 pb-4 mb-4">
                     <div>
                         <h2 class="text-base font-extrabold text-slate-800">📥 Antrean Surat Masuk</h2>
@@ -176,7 +187,7 @@
             </div>
 
             <!-- FORM INPUT MATERI & TUGAS SUSULAN -->
-            <div class="bg-white rounded-3xl p-6 shadow-sm border border-slate-200/80">
+            <div class="bg-white rounded-3xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300 border border-slate-200/80">
                 <div class="border-b border-slate-100 pb-4 mb-5">
                     <h2 class="text-base font-extrabold text-slate-800">➕ Input Checklist "Tugas Susulan"</h2>
                     <p class="text-xs text-slate-500">Masukkan materi atau tugas yang tertinggal agar otomatis muncul di aplikasi siswa.</p>
@@ -186,18 +197,18 @@
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                         <div>
                             <label class="block text-xs font-bold text-slate-700 mb-1.5">Pilih Siswa Izin</label>
-                            <select id="guru-select-siswa" class="w-full px-4 py-2.5 text-sm bg-slate-50 border border-slate-200 rounded-2xl focus:ring-2 focus:ring-emerald-500 focus:outline-none transition"></select>
+                            <select id="guru-select-siswa" class="w-full px-4 py-2.5 text-sm bg-slate-50 border border-slate-200 rounded-2xl focus:ring-2 focus:ring-emerald-500 focus:outline-none transition-all duration-200"></select>
                         </div>
                         <div>
                             <label class="block text-xs font-bold text-slate-700 mb-1.5">Mata Pelajaran</label>
-                            <input type="text" id="guru-mapel" required placeholder="Misal: Matematika" class="w-full px-4 py-2.5 text-sm bg-slate-50 border border-slate-200 rounded-2xl focus:ring-2 focus:ring-emerald-500 focus:outline-none transition">
+                            <input type="text" id="guru-mapel" required placeholder="Misal: Matematika" class="w-full px-4 py-2.5 text-sm bg-slate-50 border border-slate-200 rounded-2xl focus:ring-2 focus:ring-emerald-500 focus:outline-none transition-all duration-200">
                         </div>
                         <div>
                             <label class="block text-xs font-bold text-slate-700 mb-1.5">Rincian Tugas / Materi Tertinggal</label>
-                            <input type="text" id="guru-detail-tugas" required placeholder="Misal: Latihan Perkalian Hal. 45 No 1-5" class="w-full px-4 py-2.5 text-sm bg-slate-50 border border-slate-200 rounded-2xl focus:ring-2 focus:ring-emerald-500 focus:outline-none transition">
+                            <input type="text" id="guru-detail-tugas" required placeholder="Misal: Latihan Perkalian Hal. 45 No 1-5" class="w-full px-4 py-2.5 text-sm bg-slate-50 border border-slate-200 rounded-2xl focus:ring-2 focus:ring-emerald-500 focus:outline-none transition-all duration-200">
                         </div>
                     </div>
-                    <button type="submit" class="px-6 py-2.5 bg-slate-900 hover:bg-black text-white text-xs font-bold rounded-2xl transition shadow-md">
+                    <button type="submit" class="px-6 py-2.5 bg-slate-900 hover:bg-black text-white text-xs font-bold rounded-2xl transition-all duration-200 shadow-md hover:scale-[1.01] active:scale-[0.99]">
                         + Tambahkan Ke Misi Siswa
                     </button>
                 </form>
@@ -220,7 +231,7 @@
                     </div>
                     <div class="bg-white/10 backdrop-blur-md border border-white/20 p-5 rounded-2xl text-center min-w-[150px] shadow-inner">
                         <div class="text-[11px] text-emerald-200 font-bold uppercase tracking-wider">Progress Misi</div>
-                        <div class="text-3xl font-black mt-0.5 text-gold-400" id="siswa-percent">0%</div>
+                        <div class="text-3xl font-black mt-0.5 text-gold-400 transition-all duration-300" id="siswa-percent">0%</div>
                     </div>
                 </div>
 
@@ -231,7 +242,7 @@
             </div>
 
             <!-- CHECKLIST ITEMS -->
-            <div class="bg-white rounded-3xl p-6 md:p-8 shadow-sm border border-slate-200/80">
+            <div class="bg-white rounded-3xl p-6 md:p-8 shadow-sm hover:shadow-md transition-shadow duration-300 border border-slate-200/80">
                 <div class="flex justify-between items-center mb-5 border-b border-slate-100 pb-3">
                     <h3 class="font-extrabold text-sm text-slate-800 flex items-center gap-2">
                         <span>📋</span> Daftar Checklist Tugas Susulan
@@ -244,14 +255,17 @@
 
     </main>
 
-    <!-- FOOTER IDENTIK WEBSITE SEKOLAH -->
-    <footer class="bg-brand-900 text-emerald-300 text-xs py-6 border-t border-brand-800 mt-auto">
-        <div class="max-w-7xl mx-auto px-4 flex flex-wrap justify-between items-center gap-4 text-center md:text-left">
+    <!-- FOOTER SEKOLAH DENGAN KONTAK RESMI -->
+    <footer class="bg-brand-900 text-emerald-300 text-xs py-8 border-t border-brand-800 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-6 text-center md:text-left items-center">
             <div>
-                <p class="font-bold text-white">SDIT Bina Mulia Depok</p>
-                <p class="text-[11px] text-emerald-400 mt-0.5">Jl. Raya Sawangan No. 12, Depok, Jawa Barat</p>
+                <p class="font-extrabold text-sm text-white mb-1">SDIT Bina Mulia Depok</p>
+                <div class="text-[11px] text-emerald-200/90 leading-relaxed space-y-0.5">
+                    <p>📍 Jl. Puskesmas, Pasir Putih, KOTA DEPOK, 16519</p>
+                    <p>📞 021 77975629 &nbsp;|&nbsp; ✉️ info@sditbinamuliadepok.sch.id</p>
+                </div>
             </div>
-            <div class="text-[11px] text-emerald-400">
+            <div class="text-[11px] text-emerald-400/80 md:text-right">
                 &copy; 2026 Tim PKM Teknik Informatika Universitas Pamulang. All rights reserved.
             </div>
         </div>
@@ -282,9 +296,19 @@
             renderAll();
         });
 
+        // SWITCH ROLE DENGAN ANIMASI SMOOTH
         function switchRole(role) {
-            document.querySelectorAll("main > section").forEach(sec => sec.classList.add("hidden"));
-            document.getElementById(`role-${role}`).classList.remove("hidden");
+            const sections = document.querySelectorAll("main > section");
+            sections.forEach(sec => {
+                sec.classList.add("hidden");
+                sec.classList.remove("animate-fade-in-up");
+            });
+
+            const activeSec = document.getElementById(`role-${role}`);
+            activeSec.classList.remove("hidden");
+            // Trigger animation frame
+            void activeSec.offsetWidth;
+            activeSec.classList.add("animate-fade-in-up");
 
             document.querySelectorAll(".role-tab").forEach(tab => {
                 tab.classList.remove("bg-emerald-600", "text-white", "shadow-md");
@@ -361,7 +385,7 @@
             // 1. Render Riwayat Ortu
             const ortuList = document.getElementById("ortu-riwayat-list");
             ortuList.innerHTML = state.izin.map(i => `
-                <div class="p-4 border border-slate-200/80 rounded-2xl flex justify-between items-center bg-slate-50/50 hover:bg-slate-50 transition">
+                <div class="p-4 border border-slate-200/80 rounded-2xl flex justify-between items-center bg-slate-50/50 hover:bg-slate-50 transition duration-200">
                     <div>
                         <div class="flex items-center gap-2">
                             <span class="font-extrabold text-sm text-slate-800">${i.nama} (${i.kelas})</span>
@@ -392,8 +416,8 @@
                     </div>
                     <div class="flex items-center gap-2">
                         ${i.status === 'Menunggu Verifikasi' ? `
-                            <button onclick="verifikasiIzin(${i.id}, 'Disetujui')" class="px-3.5 py-1.5 bg-emerald-600 text-white text-xs font-bold rounded-xl hover:bg-emerald-700 shadow-sm transition">✓ Setujui</button>
-                            <button onclick="verifikasiIzin(${i.id}, 'Ditolak')" class="px-3.5 py-1.5 bg-rose-600 text-white text-xs font-bold rounded-xl hover:bg-rose-700 shadow-sm transition">✕ Tolak</button>
+                            <button onclick="verifikasiIzin(${i.id}, 'Disetujui')" class="px-3.5 py-1.5 bg-emerald-600 text-white text-xs font-bold rounded-xl hover:bg-emerald-700 shadow-sm transition active:scale-95">✓ Setujui</button>
+                            <button onclick="verifikasiIzin(${i.id}, 'Ditolak')" class="px-3.5 py-1.5 bg-rose-600 text-white text-xs font-bold rounded-xl hover:bg-rose-700 shadow-sm transition active:scale-95">✕ Tolak</button>
                         ` : `<span class="text-xs font-bold px-3 py-1 rounded-full ${i.status === 'Disetujui' ? 'bg-emerald-100 text-emerald-800' : 'bg-rose-100 text-rose-800'}">${i.status}</span>`}
                     </div>
                 </div>
@@ -411,9 +435,9 @@
                 siswaList.innerHTML = `<div class="text-center py-8 text-slate-400 text-xs">Belum ada tugas susulan. Kamu hebat! 🎉</div>`;
             } else {
                 siswaList.innerHTML = siswaTugas.map(t => `
-                    <div onclick="toggleTugas(${t.id})" class="p-4 border rounded-2xl flex items-center justify-between cursor-pointer transition-all ${t.selesai ? 'bg-slate-50 border-slate-200 opacity-60' : 'bg-amber-50/40 border-amber-200/80 hover:border-amber-400 hover:shadow-sm'}">
+                    <div onclick="toggleTugas(${t.id})" class="p-4 border rounded-2xl flex items-center justify-between cursor-pointer transition-all duration-200 ${t.selesai ? 'bg-slate-50 border-slate-200 opacity-60' : 'bg-amber-50/40 border-amber-200/80 hover:border-amber-400 hover:shadow-sm hover:-translate-y-0.5'}">
                         <div class="flex items-center space-x-3.5">
-                            <div class="w-7 h-7 rounded-xl border-2 flex items-center justify-center font-black text-xs transition-all ${t.selesai ? 'bg-emerald-600 border-emerald-600 text-white' : 'border-slate-300 bg-white'}">
+                            <div class="w-7 h-7 rounded-xl border-2 flex items-center justify-center font-black text-xs transition-all duration-200 ${t.selesai ? 'bg-emerald-600 border-emerald-600 text-white' : 'border-slate-300 bg-white'}">
                                 ${t.selesai ? '✓' : ''}
                             </div>
                             <div>
@@ -421,7 +445,7 @@
                                 <span class="text-sm font-bold ${t.selesai ? 'line-through text-slate-400' : 'text-slate-800'}">${t.detail}</span>
                             </div>
                         </div>
-                        <span class="text-[11px] font-extrabold px-3 py-1 rounded-full ${t.selesai ? 'bg-emerald-100 text-emerald-800' : 'bg-amber-100 text-amber-800'}">
+                        <span class="text-[11px] font-extrabold px-3 py-1 rounded-full transition-colors duration-200 ${t.selesai ? 'bg-emerald-100 text-emerald-800' : 'bg-amber-100 text-amber-800'}">
                             ${t.selesai ? 'Selesai' : 'Belum Selesai'}
                         </span>
                     </div>
